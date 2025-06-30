@@ -28,13 +28,6 @@ def preprocess_data(df, encoders=None, scaler=None):
     cols_to_fillna = list(set(df_processed.columns) - {"age", "gender", "diagnosis", "medicine", "smoking", "severity"})
     df_processed[cols_to_fillna] = df_processed[cols_to_fillna].fillna("None")
 
-    # Dropping unwanted features
-    print("Dropping unwanted features...")
-    df_processed.drop(
-        columns=['exercise_frequency', 'medication_adherence', 'risk_score', 'health_score',
-                 'age_severity_interaction'],
-        errors='ignore', inplace=True
-    )
 
     print("One-hot encoding categorical variables...")
     # Initialize encoders dictionary
